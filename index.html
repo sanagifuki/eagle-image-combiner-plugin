@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eagle Image Combiner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <h1>Image Combiner</h1>
+        <p id="selection-summary">ローカル画像をドロップしてください</p>
+      </div>
+      <button id="clear-button" class="clear-button" type="button">クリア</button>
+    </header>
+
+    <section class="controls" aria-label="結合設定">
+      <label>
+        <span>並べ方</span>
+        <select id="layout-mode">
+          <option value="horizontal">横に並べる</option>
+          <option value="vertical">縦に並べる</option>
+          <option value="grid2">2列に並べる</option>
+        </select>
+      </label>
+
+      <label class="check-row">
+        <input id="line-enabled" type="checkbox" checked>
+        <span>境界線</span>
+      </label>
+
+      <label>
+        <span>太さ</span>
+        <input id="line-width" type="number" min="0" max="50" value="5">
+      </label>
+
+      <label>
+        <span>色</span>
+        <select id="line-color">
+          <option value="#000000">黒</option>
+          <option value="#ffffff">白</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="drop-zone" class="preview-wrap" aria-label="画像ドロップエリア">
+      <canvas id="preview-canvas"></canvas>
+      <div id="empty-state">画像ファイルをここにドラッグ＆ドロップ</div>
+    </section>
+
+    <footer class="footer">
+      <div id="status">準備中</div>
+      <button id="combine-button" type="button" disabled>結合してEagleに追加</button>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

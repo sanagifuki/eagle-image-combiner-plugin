@@ -1,0 +1,19 @@
+{
+  "id": "7f787d3b-7f51-4f93-b0a1-9d0cc6e68d2f",
+  "version": "0.1.0",
+  "platform": "all",
+  "arch": "all",
+  "name": "Image Combiner",
+  "logo": "/logo.png",
+  "keywords": [
+    "image",
+    "combine",
+    "layout"
+  ],
+  "devTools": false,
+  "main": {
+    "url": "index.html",
+    "width": 560,
+    "height": 520
+  }
+}
