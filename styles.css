@@ -32,6 +32,16 @@ input {
   font: inherit;
 }
 
+.icon-symbol {
+  font-family: "Segoe MDL2 Assets" !important;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  position: relative;
+  top: 0.12em;
+  -webkit-text-stroke: 0.7px currentColor;
+}
+
 .app {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
