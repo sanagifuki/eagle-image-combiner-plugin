@@ -180,6 +180,8 @@ function renderPreview() {
   state.canvas = buildCombinedCanvas();
   if (!state.canvas) {
     elements.canvas.style.display = "none";
+    elements.canvas.style.width = "";
+    elements.canvas.style.height = "";
     elements.empty.style.display = "block";
     return;
   }
@@ -187,8 +189,23 @@ function renderPreview() {
   elements.canvas.width = state.canvas.width;
   elements.canvas.height = state.canvas.height;
   elements.canvas.getContext("2d").drawImage(state.canvas, 0, 0);
+  fitPreviewCanvas();
   elements.canvas.style.display = "block";
   elements.empty.style.display = "none";
+}
+
+function fitPreviewCanvas() {
+  const wrapRect = elements.dropZone.getBoundingClientRect();
+  const maxWidth = Math.max(1, wrapRect.width - 24);
+  const maxHeight = Math.max(1, wrapRect.height - 24);
+  const scale = Math.min(
+    1,
+    maxWidth / state.canvas.width,
+    maxHeight / state.canvas.height
+  );
+
+  elements.canvas.style.width = `${Math.round(state.canvas.width * scale)}px`;
+  elements.canvas.style.height = `${Math.round(state.canvas.height * scale)}px`;
 }
 
 async function addFiles(fileList) {
