@@ -1,6 +1,6 @@
 ![Eagle Image Combiner Plugin header](./header.png)
 
-# Eagle Image Combiner Plugin: Eagle用画像結合プラグイン
+# Eagle用画像結合プラグイン
 
 ドラッグ＆ドロップした画像を結合し、Eagleへ追加するためのプラグインです。
 
