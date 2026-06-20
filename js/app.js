@@ -236,12 +236,23 @@ async function addFiles(fileList) {
   }
 }
 
+function getClipboardImageFiles(clipboardData) {
+  if (!clipboardData) {
+    return [];
+  }
+
+  return Array.from(clipboardData.items || [])
+    .filter((item) => item.kind === "file" && item.type.startsWith("image/"))
+    .map((item) => item.getAsFile())
+    .filter(Boolean);
+}
+
 function clearImages() {
   state.files = [];
   state.images = [];
   state.canvas = null;
   resetMetadata();
-  elements.summary.textContent = "ローカル画像をドロップしてください";
+  elements.summary.textContent = "画像をドロップまたは貼り付けてください";
   elements.combineButton.disabled = true;
   setStatus("クリアしました");
   renderPreview();
@@ -300,6 +311,16 @@ elements.dropZone.addEventListener("drop", (event) => {
   event.preventDefault();
   elements.dropZone.classList.remove("dragging");
   addFiles(event.dataTransfer.files);
+});
+
+document.addEventListener("paste", (event) => {
+  const imageFiles = getClipboardImageFiles(event.clipboardData);
+  if (imageFiles.length === 0) {
+    return;
+  }
+
+  event.preventDefault();
+  addFiles(imageFiles);
 });
 
 elements.clearButton.addEventListener("click", clearImages);
